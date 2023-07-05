@@ -9,6 +9,7 @@ const nextConfig = {
             pathname: '/my-bucket/**',
           },
         ],
+          domains: ['ipfs.io']
       },
 }
 

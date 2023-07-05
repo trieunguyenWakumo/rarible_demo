@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import ListCollections from './ListCollections'
+import Link from 'next/link'
 
 const Collections = () => {
   const [isOpen, setOpen] = useState(false)
@@ -83,9 +84,9 @@ const Collections = () => {
       <ButtonGroup/>
       {/* collections */}
       <ListCollections/>
-      <a>
+      <Link href={''} >
         <button className='text-black px-[22px] py-[10px] font-semibold text-sm leading-6 flex w-full justify-center items-center p rounded-xl bg-[#16161a0a]' >View all collections</button>
-      </a>
+      </Link>
     </div>
   )
 }
