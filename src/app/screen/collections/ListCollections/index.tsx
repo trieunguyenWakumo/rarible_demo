@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import { BsArrowDownShort,BsArrowUpShort } from "react-icons/bs";
+import Link from "next/link";
 const ListCollections = () => {
   const [isButtonDown, setButtonDown] = useState(false);
   const [isButtonUp, setButtonUp] = useState(false);
@@ -15,6 +16,7 @@ const ListCollections = () => {
       items: "10000",
       owner: "5700",
       sticker: true,
+      image:"/nft1.jpeg"
     },
     {
       id: 2,
@@ -26,6 +28,7 @@ const ListCollections = () => {
       items: "19647",
       owner: "11600",
       sticker: true,
+      image:"/nft2.jpeg"
     },
     {
       id: 3,
@@ -37,6 +40,7 @@ const ListCollections = () => {
       items: "11700",
       owner: "4500",
       sticker: false,
+      image:"/nft3.jpeg"
     },
     {
       id: 4,
@@ -48,6 +52,7 @@ const ListCollections = () => {
       items: "10000",
       owner: "5700",
       sticker: true,
+      image:"/nft4.jpeg"
     },
     {
       id: 5,
@@ -59,6 +64,7 @@ const ListCollections = () => {
       items: "19647",
       owner: "11600",
       sticker: true,
+      image:"/nft5.jpeg"
     },
     {
       id: 6,
@@ -70,6 +76,7 @@ const ListCollections = () => {
       items: "11700",
       owner: "4500",
       sticker: false,
+      image:"/nft1.jpeg"
     },
     {
       id: 7,
@@ -81,6 +88,7 @@ const ListCollections = () => {
       items: "10000",
       owner: "5700",
       sticker: true,
+      image:"/nft4.jpeg"
     },
     {
       id: 8,
@@ -92,9 +100,10 @@ const ListCollections = () => {
       items: "19647",
       owner: "11600",
       sticker: true,
+      image:"/nft2.jpeg"
     },
     {
-      id: "9",
+      id: 9,
       collection: "Collection",
       money: "30",
       percent: "112",
@@ -103,6 +112,7 @@ const ListCollections = () => {
       items: "11700",
       owner: "4500",
       sticker: false,
+      image:"/nft3.jpeg"
     },
   ];
   const changeButtonCollection = useCallback(() => {
@@ -137,12 +147,12 @@ const ListCollections = () => {
     return (
       <div className="">
         {collectionData.map((items ) => (
-          <a key={items.id} className=" rounded-2xl m-1 pr-7 pl-7 flex flex-wrap h-[72px] items-center   text-black font-bold text-sm leading-6 cursor-pointer hover:bg-gray-100">
+          <Link href={"/marketplace"} key={items.id} className=" rounded-2xl m-1 pr-7 pl-7 flex flex-wrap h-[72px] items-center   text-black font-bold text-sm leading-6 cursor-pointer hover:bg-gray-100">
             <div className="mr-4">{items.id}</div>
             <div className="mr-4 flex flex-wrap basis-1/4 grow items-center  ">
               <div className="relative mr-4 ">
                 <Image
-                  src={"/nft1.jpeg"}
+                  src={`${items.image}`}
                   alt="logo"
                   width={40}
                   height={40}
@@ -184,7 +194,7 @@ const ListCollections = () => {
             </div>
             <div className="mr-4 text-end basis-1/8 grow w-[95px]">{checkNumber(items.items)}</div>
             <div className=" text-end basis-1/8 grow w-[95px]">{checkNumber(items.owner)}</div>
-          </a>
+          </Link>
         ))}
       </div>
     );

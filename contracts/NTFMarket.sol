@@ -5,12 +5,13 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-struct NFTListing {
-    uint256 price;
-    address seller;
-}
 
 contract NFTMarket is ERC721URIStorage, Ownable {
+    struct NFTListing {
+        uint256 price;
+        address seller;
+    }
+
     using Counters for Counters.Counter;
     using SafeMath for uint256;
     Counters.Counter private _tokenIds;
@@ -31,8 +32,8 @@ contract NFTMarket is ERC721URIStorage, Ownable {
         uint256 currentID = _tokenIds.current();
         _safeMint(msg.sender, currentID);
         _setTokenURI(currentID, tokenURI);
-        return currentID;
         emit NFTTransfer(currentID, address(0), msg.sender, tokenURI, 0);
+        return currentID;
     }
 
     function listNFT(uint256 tokenID, uint256 price) public payable {
@@ -73,3 +74,10 @@ contract NFTMarket is ERC721URIStorage, Ownable {
         _listing[tokenID].seller = address(0);
     }
 }
+
+interface IERC20 {
+    function transferFrom(address from, address to, uint256 amount) external;
+    function transfer(address to, uint256 amount) external;
+
+}
+

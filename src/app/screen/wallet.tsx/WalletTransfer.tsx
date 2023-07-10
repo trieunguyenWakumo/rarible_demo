@@ -1,9 +1,8 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useCallback } from "react";
 import { formatBalance, formatChainAsNum } from "./format";
-import { ethers } from "ethers";
+import {parseUnits, ethers } from "ethers";
 import ABI from "./ABI.json";
-import { parseUnits } from "ethers/lib/utils";
 import { MdWallet } from "react-icons/md";
 const Wallet = () => {
   //0x1F474158849B6aDF419b6B95EC3aeEDebaeC1658
@@ -18,8 +17,8 @@ const Wallet = () => {
   const [transferAmount, setTransferAmount] = useState<string>("");
 
   const transferHandler = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    const provider = new ethers.JsonRpcProvider(window.ethereum);
+    const signer = await provider.getSigner();
     const contract = new ethers.Contract(contractAddress, ABI, signer);
     console.log("address", transferAddress);
     console.log("DATA AMOUNT", transferAmount);
@@ -52,7 +51,7 @@ const Wallet = () => {
   }, []);
 
   const getProvider = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const provider = new ethers.JsonRpcProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
   };
 
@@ -96,17 +95,15 @@ const Wallet = () => {
                 onClick={handleConnect}
               >
                 <div className="p-1">
-                <MdWallet />
+                  <MdWallet />
                 </div>
-               
-               <p> Send Amount </p> 
+
+                <p> Send Amount </p>
               </button>
             )}
             {wallet.accounts.length > 0 && (
               <div className="flex flex-wrap bg-transparent rounded-xl border-1  pr-[12px] pl-[12px] pt-[10px] pb-[10px] text-white font-medium ">
-                <button
-                 onClick={handleConnect}> 
-                  
+                <button onClick={handleConnect}>
                   <h3 className=" mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Wallet Accounts:
                     <label className=" mb-2 text-sm font-medium text-red-600 dark:text-white">

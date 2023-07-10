@@ -18,7 +18,6 @@ export default function Page(){
   <Header /> 
 <SwiperSlider />
 <Collections />
-<MarketplaceScreen/>
 <NotableArticlesScreen/>
 <Footer />
     </main>
