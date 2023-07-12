@@ -1,0 +1,282 @@
+{
+    "DATANFT_LIST" :[
+        {
+            "id": 1,
+            "imageUrl": "nft1.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 2,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 3,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 4,
+            "imageUrl": "nft4.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 5,
+            "imageUrl": "nft1.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 6,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 7,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 8,
+            "imageUrl": "nft4.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 9,
+            "imageUrl": "nft1.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 2,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 10,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 11,
+            "imageUrl": "nft4.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 12,
+            "imageUrl": "nft1.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 13,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 14,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 15,
+            "imageUrl": "nft4.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 16,
+            "imageUrl": "nft1.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 17,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 18,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 19,
+            "imageUrl": "nft4.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 20,
+            "imageUrl": "nft1.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 20,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 20,
+            "imageUrl": "nft2.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        },
+        {
+            "id": 21,
+            "imageUrl": "nft4.jpeg",
+            "price": "Price",
+            "amount": "0.02",
+            "title": "Highest bid",
+            "valueBid": "No bids yet",
+            "description": "Art Block Factory",
+            "name": "Card1 #540"
+        }
+    ],
+     "DATASWIPER" : [
+        {
+          "url": "nft1.jpeg",
+          "title": "Mocaverse Marketplace",
+         " content":
+            "A safe haven for Mocas to trade. Powered by Rarible.",
+          "btn": "Visit Marketplace"
+        },
+        {
+          "url": "nft2.jpeg",
+          "title": "Why we are bullish on NFTs more than ever before",
+         " content":
+            "A customizable, on-brand marketplace for your community to trade all of your collections. ",
+          "btn": "Get Bullish"
+        },
+        {
+          "url": "nft3.jpeg",
+          "title": "Free No-code Marketplace for Your Collection",
+         " content":
+            "The bear market is deepening, floor prices are falling, and the number of trading wallets is lingering at an all time low.",
+          "btn": "Create Marketplace"
+        },
+        {
+          "url": "nft4.jpeg",
+          "title": "Build NFT Apps Faster with Rarible Protocol",
+         " content":
+            "Build liquid NFT experiences at warp speed with our open-source NFT protocol with free Indexer, API and SDK.  ",
+          "btn": "Start building"
+        },
+        {
+          "url": "nft5.jpeg",
+          "title": "Why we are bullish on NFTs more than ever before",
+         " content":
+            "The bear market is deepening, floor prices are falling, and the number of trading wallets is lingering at an all time low.",
+          "btn": "Get Bullish"
+        }
+      ]
+      
+}

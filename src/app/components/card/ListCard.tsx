@@ -7,8 +7,9 @@ import Image from "next/image";
 import axios from "axios";
 import { IoIosAdd } from "react-icons/io";
 import Link from "next/link";
-
-const Card = (props: {
+import { useRouter } from 'next/router'
+const ListCard = (props: {
+  id?:number;
   imageUrl?: string;
   price?: string;
   amount?: string;
@@ -18,15 +19,13 @@ const Card = (props: {
   name?: string;
 }) => {
     
-  const [NFT, setNFT] = useState<undefined[]>([]);
-const handData =()=>{
-  localStorage.setItem('DataNFTCard', JSON.stringify(props));
-  const userData = JSON.parse(localStorage.getItem('DataNFTCard') || '{}');
-  console.log(userData);
-}
+
 
   return (
-    <Link href={'/pagedetail'} onClick={handData}> 
+    <Link   href={{
+      pathname: '/pagedetail',
+      query: { id: props.id },
+    }} > 
     <div
       className=" group max-w-[270px] min-h-[380px] cursor-pointer m-4
    flex flex-wrap justify-between p-2 overflow-hidden rounded-lg bg-white shadow-lg
@@ -102,4 +101,4 @@ const handData =()=>{
   );
 };
 
-export default Card;
+export default ListCard;

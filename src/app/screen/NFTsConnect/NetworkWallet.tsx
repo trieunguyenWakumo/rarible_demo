@@ -15,10 +15,12 @@ if (!projectId) {
 }
 
 //
+
 const NetworkWallet = () => {
   const initialState = { accounts: [], balance: "", chainId: "" };
   const [wallet, setWallet] = useState(initialState);
-  const [disabled, setDisabled] = useState(false);
+  const [connectButtonDisabled, setConnectButtonDisabled] = useState(false);
+  const [isNetWork, setIsNetWork] = useState("")
   const { connect } = useConnect({
     requiredNamespaces: {
       eip155: {
@@ -28,28 +30,39 @@ const NetworkWallet = () => {
       },
     },
   });
+  useEffect(()=>{
+    switch(wallet.chainId)
+    {
+      case "0x89":
+        setIsNetWork("MUMBAI")
+        break
+        case "0x38":
+        setIsNetWork("BNB")
+        break
+        case "0x1":
+        setIsNetWork("ETH")
+        break
+  
+    }
+  },[wallet])
+
 
   // 3. Sign in function
   const onConnect = async () => {
     try {
-      setDisabled(true);
+      setConnectButtonDisabled(true);
       const data = await connect();
       console.log(data);
     } catch (err) {
       console.error(err);
     } finally {
-      setDisabled(false);
+      setConnectButtonDisabled(false);
     }
   };
   const handleConnect = async () => {
-    let signer = null;
-    let provider;
     if (window.ethereum == null) {
       console.log("MetaMask not installed; using read-only defaults");
     } else {
-      provider = new ethers.BrowserProvider(window.ethereum);
-      signer = await provider.getSigner();
-      console.log(signer.address);
       await window.ethereum
         .request({
           method: "eth_requestAccounts",
@@ -59,29 +72,7 @@ const NetworkWallet = () => {
         });
     }
   };
-  useEffect(() => {
-    const refreshAccounts = (accounts: any) => {
-      if (accounts.length > 0) {
-        updateWallet(accounts);
-      } else {
-        setWallet(initialState);
-      }
-    };
 
-    const refreshChain = (chainId: any) => {
-      setWallet((wallet) => ({ ...wallet, chainId }));
-    };
-    getProvider();
-    return () => {
-      window.ethereum?.removeListener("accountsChanged", refreshAccounts);
-      window.ethereum?.removeListener("chainChanged", refreshChain);
-    };
-  }, []);
-
-  const getProvider = async () => {
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    await provider.send("eth_requestAccounts", []);
-  };
   const updateWallet = async (accounts: any) => {
     const balance = formatBalance(
       await window.ethereum.request({
@@ -105,9 +96,7 @@ const NetworkWallet = () => {
       <div className="flex flex-warp">
         <div>
           <DropdownImage
-            tokenChoose={"BNB"}
-            tokenAwait1={"ETH"}
-            tokenAwait2={"MUMBAI"}
+            tokenChoose={isNetWork}
           />
         </div>
         <div className="flex flex-col m-2">
@@ -117,7 +106,7 @@ const NetworkWallet = () => {
           >
             Connect
           </button>
-          <button className="bg-blue-400  text-white mb-2 rounded-lg p-2 " onClick={onConnect} disabled={disabled}>
+          <button className="bg-blue-400  text-white mb-2 rounded-lg p-2 " onClick={onConnect} disabled={connectButtonDisabled}>
             Connect Wallet 
           </button>
         </div>

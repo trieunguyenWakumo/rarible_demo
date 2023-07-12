@@ -2,8 +2,9 @@ import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import { BsArrowDownShort,BsArrowUpShort } from "react-icons/bs";
 import Link from "next/link";
-const ListCard = (
+const ListCardTable = (
     props: {
+      id?:number;
         imageUrl?: string;
         price?: string;
         amount?: string;
@@ -13,18 +14,18 @@ const ListCard = (
         name?: string;
     }      
 ) => {
-  const handData =()=>{
-    localStorage.setItem('DataNFTCard', JSON.stringify(props));
-    const userData = JSON.parse(localStorage.getItem('DataNFTCard') || '{}');
-    console.log(userData);
-  }
+ 
   return (
    
       
       <div className="border-[2px] rounded-2xl w-full ">
         <div className="">
       
-      <Link href={"/pagedetail"} onClick={handData} className=" rounded-2xl m-1 pr-7 pl-7 flex flex-wrap h-[72px] items-center   text-black font-bold text-sm leading-6 cursor-pointer hover:bg-gray-100">
+      <Link href={{
+      pathname: '/pagedetail',
+      query: { id: props.id },
+    }}  
+       className=" rounded-2xl m-1 pr-7 pl-7 flex flex-wrap h-[72px] items-center   text-black font-bold text-sm leading-6 cursor-pointer hover:bg-gray-100">
         <div className="mr-4 flex flex-wrap basis-1/4 grow items-center  ">
           <div className="relative mr-4 ">
             <Image
@@ -53,4 +54,4 @@ const ListCard = (
   );
 };
 
-export default ListCard;
+export default ListCardTable;
