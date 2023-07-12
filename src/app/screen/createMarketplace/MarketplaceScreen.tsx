@@ -58,7 +58,7 @@ const MarketplaceScreen = () => {
     };
   }, []);
   const getProvider = async () => {
-    const provider = new ethers.JsonRpcProvider(window.ethereum);
+    const provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
   };
   const updateWallet = async (accounts: any) => {

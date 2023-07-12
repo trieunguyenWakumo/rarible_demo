@@ -17,7 +17,7 @@ const Wallet = () => {
   const [transferAmount, setTransferAmount] = useState<string>("");
 
   const transferHandler = async () => {
-    const provider = new ethers.JsonRpcProvider(window.ethereum);
+    const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(contractAddress, ABI, signer);
     console.log("address", transferAddress);
@@ -51,23 +51,29 @@ const Wallet = () => {
   }, []);
 
   const getProvider = async () => {
-    const provider = new ethers.JsonRpcProvider(window.ethereum);
+    const provider = new ethers.BrowserProvider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
   };
 
-  const updateWallet = async (accounts: any) => {
-    const balance = formatBalance(
-      await window.ethereum.request({
-        method: "eth_getBalance",
-        params: [accounts[0], "latest"],
-      })
-    );
-    const chainId = await window.ethereum.request({
-      method: "eth_chainId",
-    });
-    setWallet({ accounts, balance, chainId });
-  };
+  useEffect(() => {
+    const refreshAccounts = (accounts: any) => {
+      if (accounts.length > 0) {
+        updateWallet(accounts);
+      } else {
+        setWallet(initialState);
+      }
+    };
 
+    const refreshChain = (chainId: any) => {
+      setWallet((wallet) => ({ ...wallet, chainId }));
+    };
+    getProvider();
+    return () => {
+      window.ethereum?.removeListener("accountsChanged", refreshAccounts);
+      window.ethereum?.removeListener("chainChanged", refreshChain);
+    };
+  }, []);
+  
   const handleConnect = async () => {
     setHasProvider(true);
     await window.ethereum
@@ -83,6 +89,18 @@ const Wallet = () => {
       });
   };
 
+  const updateWallet = async (accounts: any) => {
+    const balance = formatBalance(
+      await window.ethereum.request({
+        method: "eth_getBalance",
+        params: [accounts[0], "latest"],
+      })
+    );
+    const chainId = await window.ethereum.request({
+      method: "eth_chainId",
+    });
+    setWallet({ accounts, balance, chainId });
+  };
   return (
     <section>
       <div>
