@@ -1,3 +1,11 @@
+import { MainNFTScreen } from "../screen/NFTsConnect/MainNFTScreen";
+import NetworkWallet from "../screen/NFTsConnect/NetworkWallet";
+
 export default function Page() {
-    return <h1>Hello, Dashboard Page!</h1>
-  }
+  return (
+    <>
+      <NetworkWallet />
+      <MainNFTScreen />
+    </>
+  );
+}

@@ -32,7 +32,7 @@ const Header = () => {
 
          {/* list  */}
         <div className='flex flex-wrap text-gray-500 leading-6' >
-          <Link className='mr-[22px] font-bold ' href={''}><p>Explore</p></Link>
+          <Link  className='mr-[22px] font-bold ' href={'/dashboard'}><p>Explore</p></Link>
           <Link className='mr-[22px] font-bold' href={''}><p>Create</p></Link>
           <Link className='mr-[22px] font-bold' href={''}><p>Seller</p></Link>
         </div>
@@ -54,7 +54,7 @@ Marketplace
 
          </div>
          {/* connectWallet */}
-        <div  className='flex flex-wrap mr-10'>
+        <div  className='flex flex-wrap '>
          <Wallet />
         </div>
          {/* icon Store  */}
