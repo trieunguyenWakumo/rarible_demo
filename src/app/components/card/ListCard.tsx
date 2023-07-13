@@ -5,58 +5,39 @@ import { useEffect, useState } from "react";
 import Web3Modal from "web3modal";
 import Image from "next/image";
 import axios from "axios";
-import ABI from "../../../data/ABI721.json"
-import { parseUnits } from "ethers/lib/utils";
-import { IoIosAdd } from 'react-icons/io';
-const PriceData = {
-  price: "Price",
-  amount: 0.027,
-  title: "Highest bid",
-  valueBid: "No bids yet",
-};
-const CardNFT = () => {
-  const [NFT, setNFT] = useState<undefined[]>([]);
-  const contractAddress = "0x0000000000000000000000000000000000001010";
-  const initialState = { accounts: [], balance: "", chainId: "" };
-  const [errorMessage, setErrorMessage] = useState("");
-  const transferAddress = useState<string>("0x387f11eB47b0D7dcB20B9A2CA255d3B3C492a584");
-  const transferAmount = useState<string>("1");
-  const handleFetchData = async () => {
-    const data = await axios
-      .get(
-        `https://ipfs.io/ipfs/bafybeibyilsckfkcwvqyrphc5n4xijk3onofibrlpz4q6ph7xp55o4eqeu/3842`
-      )
-      .then((res) => {
-        console.log("check res", res?.data);
-        const Store = [];
-        Store.push(res.data);
-        setNFT(Store);
-      });
-  };
-
-  useEffect(() => {
-    handleFetchData();
-  }, []);
-  const transferHandler = async () => {
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer =  await provider.getSigner();
-    const contract = new ethers.Contract(contractAddress, ABI, signer);
+import { IoIosAdd } from "react-icons/io";
+import Link from "next/link";
+import { useRouter } from 'next/router'
+const ListCard = (props: {
+  id?:number;
+  imageUrl?: string;
+  price?: string;
+  amount?: string;
+  title?: string;
+  valueBid?: string;
+  description?:string;
+  name?: string;
+}) => {
     
-  };
-  const url = NFT.map((e: any) => e.image);
+  const [isLoading, setLoading] = useState(true);
+
   return (
-    <div
+    <Link   href={{
+      pathname: '/pagedetail',
+      query: { id: props.id },
+    }} > 
+    {isLoading ? (<div
       className=" group max-w-[270px] min-h-[380px] cursor-pointer m-4
-   flex flex-wrap justify-start p-2 overflow-hidden rounded-lg bg-white shadow-lg
+   flex flex-wrap justify-between p-2 overflow-hidden rounded-lg bg-white shadow-lg
    transition-all duration-300 hover:shadow-2xl dark:bg-[#333333]"
     >
-      <div className="relative ">
+      <div className="relative   ">
         <Image
-          src={`https://ipfs.io/ipfs/${url.map((e: string) => e.slice(7))}`}
+         src={`/image/${props.imageUrl}`}
           alt="banner"
           width={250}
           height={250}
-          className="rounded-lg max-w-md max-h-96  re mr-[60px] bg-cover border-solid transition duration-300 ease-in-out hover:scale-105"
+          className="rounded-lg h-[250px]  mr-[60px] bg-cover border-solid transition duration-300 ease-in-out hover:scale-105"
         />
         <div className=" block hover:hidden absolute bottom-[8px] text-white  bg-black opacity-70 rounded-full left-[20px]">
           <svg
@@ -78,45 +59,89 @@ const CardNFT = () => {
           </svg>
         </div>
         <div className="  ">
-        <div className="  absolute bottom-[8px] text-white bg-black opacity-70  rounded-lg left-[80px]">
-         <button onClick={transferHandler} className="p-2 font-bold ">Buy Now</button> 
+          <div className="  absolute bottom-[8px] text-white bg-black opacity-70  rounded-lg left-[80px]">
+            <button  className="p-2 font-bold ">
+              Buy Now
+            </button>
+          </div>
+          <div className="  absolute  bottom-[8px] text-white bg-black  opacity-70 rounded-lg left-[180px]">
+            <IoIosAdd size={40} />
+          </div>
         </div>
-        <div className="  absolute  bottom-[8px] text-white bg-black  opacity-70 rounded-lg left-[180px]">
-       <IoIosAdd size={40} />
-        </div>
-        </div>
-      
-        
       </div>
       <div className="flex flex-col mt-2 pr-2 pl-2">
         <div className="flex text-sm items-center text-gray-500  uppercase font-semibold">
-          <p className="pr-4 ">{NFT.map((e: any) => e.description)}</p>
+          <p className="pr-4 ">{props.description}</p>
         </div>
 
         <div className="flex text-sm items-center text-black font-semibold">
-          <p className="pr-4 ">{NFT.map((e: any) => e.name)}</p>
+          <p className="pr-4 ">{props.name}</p>
         </div>
       </div>
       <div className="flex flex-wrap bg-gray-300 rounded-lg m-2 justify-between items-center">
         <div className="p-2">
           <p className="text-sm font-semibold items-center text-gray-500 ">
-            {PriceData.price}
+            {props.price}
           </p>
           <p className="text-sm  font-semibold items-center text-black ">
-            {PriceData.amount}ETH
+            {props.amount}ETH
           </p>
         </div>
         <div className="p-2">
           <p className="text-sm  font-semibold items-center text-gray-500 ">
-            {PriceData.title}
+            {props.title}
           </p>
           <p className="text-sm  font-semibold items-center text-black ">
-            {PriceData.valueBid}
+            {props.valueBid}
           </p>
         </div>
       </div>
-    </div>
+    </div>):(<div
+      className=" group max-w-[270px] min-h-[380px] cursor-pointer m-4
+   flex flex-wrap justify-between p-2 overflow-hidden rounded-lg bg-white shadow-lg
+   transition-all duration-300 hover:shadow-2xl dark:bg-[#333333]"
+    >
+      <div
+                role="status"
+                className="flex w-[250px] h-[250px] mr-3 items-center justify-center  bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"
+              >
+                <div
+                  className="w-[250px] h-[250px] text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                 
+                >
+                     </div>
+              </div>
+      <div className="flex flex-col mt-2 pr-2 pl-2">
+        <div className="flex text-sm items-center text-gray-500  uppercase font-semibold">
+          <p className="w-[200px] h-3 bg-gray-200 rounded-xl pr-4  "></p>
+        </div>
+
+        <div className="flex text-sm mt-2 items-center text-black font-semibold">
+          <p className="w-[100px] h-4 bg-gray-200 rounded-xl pr-4 "></p>
+        </div>
+      </div>
+      <div className="flex flex-wrap  bg-gray-300 rounded-lg m-2 justify-between items-center">
+        <div className="p-2">
+          <p className="w-[50px] m-1 h-3 bg-gray-500 rounded-xl items-center text-gray-500 ">
+          
+          </p>
+          <p className="w-[50px] m-1 h-3 bg-gray-500 rounded-xl items-center text-black ">
+            
+          </p>
+        </div>
+        <div className="p-2">
+          <p className="w-[50px]  m-1 h-3 bg-gray-500 rounded-xl items-center text-gray-500 ">
+           
+          </p>
+          <p className="w-[50px]  m-1 h-3 bg-gray-500 rounded-xl items-center text-black ">
+            
+          </p>
+        </div>
+      </div>
+    </div>)}
+    </Link>
   );
 };
 
-export default CardNFT;
+export default ListCard;

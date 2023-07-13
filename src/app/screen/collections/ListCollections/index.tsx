@@ -2,119 +2,11 @@ import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import { BsArrowDownShort,BsArrowUpShort } from "react-icons/bs";
 import Link from "next/link";
+import NFTDATA from "../../../data/NFTDATA.json"
 const ListCollections = () => {
   const [isButtonDown, setButtonDown] = useState(false);
   const [isButtonUp, setButtonUp] = useState(false);
-  const collectionData = [
-    {
-      id: 1,
-      collection: "Collection",
-      money: "23.1",
-      percent: "-19.5",
-      volume: "661.4",
-      volumeChange: "+90",
-      items: "10000",
-      owner: "5700",
-      sticker: true,
-      image:"/nft1.jpeg"
-    },
-    {
-      id: 2,
-      collection: "Collection",
-      money: "92.4",
-      percent: "20",
-      volume: "502.23",
-      volumeChange: "+200",
-      items: "19647",
-      owner: "11600",
-      sticker: true,
-      image:"/nft2.jpeg"
-    },
-    {
-      id: 3,
-      collection: "Collection",
-      money: "30",
-      percent: "112",
-      volume: "1.442 ",
-      volumeChange: "-45",
-      items: "11700",
-      owner: "4500",
-      sticker: false,
-      image:"/nft3.jpeg"
-    },
-    {
-      id: 4,
-      collection: "Collection",
-      money: "23.1",
-      percent: "-19.5",
-      volume: "661.4",
-      volumeChange: "+90",
-      items: "10000",
-      owner: "5700",
-      sticker: true,
-      image:"/nft4.jpeg"
-    },
-    {
-      id: 5,
-      collection: "Collection",
-      money: "92.4",
-      percent: "20",
-      volume: "502.23",
-      volumeChange: "+200",
-      items: "19647",
-      owner: "11600",
-      sticker: true,
-      image:"/nft5.jpeg"
-    },
-    {
-      id: 6,
-      collection: "Collection",
-      money: "30",
-      percent: "112",
-      volume: "1.442 ",
-      volumeChange: "-45",
-      items: "11700",
-      owner: "4500",
-      sticker: false,
-      image:"/nft1.jpeg"
-    },
-    {
-      id: 7,
-      collection: "Collection",
-      money: "23.1",
-      percent: "-19.5",
-      volume: "661.4",
-      volumeChange: "+90",
-      items: "10000",
-      owner: "5700",
-      sticker: true,
-      image:"/nft4.jpeg"
-    },
-    {
-      id: 8,
-      collection: "Collection",
-      money: "92.4",
-      percent: "20",
-      volume: "502.23",
-      volumeChange: "+200",
-      items: "19647",
-      owner: "11600",
-      sticker: true,
-      image:"/nft2.jpeg"
-    },
-    {
-      id: 9,
-      collection: "Collection",
-      money: "30",
-      percent: "112",
-      volume: "1.442 ",
-      volumeChange: "-45",
-      items: "11700",
-      owner: "4500",
-      sticker: false,
-      image:"/nft3.jpeg"
-    },
-  ];
+  const data = useState(NFTDATA.collection_data )
   const changeButtonCollection = useCallback(() => {
 
   if(isButtonDown == false && isButtonUp == false  ){
@@ -146,13 +38,13 @@ const ListCollections = () => {
   }
     return (
       <div className="">
-        {collectionData.map((items ) => (
+        {data?.[0]?.map((items ) => (
           <Link href={"/marketplace"} key={items.id} className=" rounded-2xl m-1 pr-7 pl-7 flex flex-wrap h-[72px] items-center   text-black font-bold text-sm leading-6 cursor-pointer hover:bg-gray-100">
             <div className="mr-4">{items.id}</div>
             <div className="mr-4 flex flex-wrap basis-1/4 grow items-center  ">
               <div className="relative mr-4 ">
                 <Image
-                  src={`${items.image}`}
+                  src={`/image${items.image}`}
                   alt="logo"
                   width={40}
                   height={40}
