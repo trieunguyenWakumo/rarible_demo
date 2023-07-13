@@ -19,25 +19,25 @@ const ListCard = (props: {
   name?: string;
 }) => {
     
-
+  const [isLoading, setLoading] = useState(true);
 
   return (
     <Link   href={{
       pathname: '/pagedetail',
       query: { id: props.id },
     }} > 
-    <div
+    {isLoading ? (<div
       className=" group max-w-[270px] min-h-[380px] cursor-pointer m-4
    flex flex-wrap justify-between p-2 overflow-hidden rounded-lg bg-white shadow-lg
    transition-all duration-300 hover:shadow-2xl dark:bg-[#333333]"
     >
-      <div className="relative ">
+      <div className="relative   ">
         <Image
-          src={`/${props.imageUrl}`}
+         src={`/image/${props.imageUrl}`}
           alt="banner"
           width={250}
           height={250}
-          className="rounded-lg max-w-md max-h-96  re mr-[60px] bg-cover border-solid transition duration-300 ease-in-out hover:scale-105"
+          className="rounded-lg h-[250px]  mr-[60px] bg-cover border-solid transition duration-300 ease-in-out hover:scale-105"
         />
         <div className=" block hover:hidden absolute bottom-[8px] text-white  bg-black opacity-70 rounded-full left-[20px]">
           <svg
@@ -96,7 +96,50 @@ const ListCard = (props: {
           </p>
         </div>
       </div>
-    </div>
+    </div>):(<div
+      className=" group max-w-[270px] min-h-[380px] cursor-pointer m-4
+   flex flex-wrap justify-between p-2 overflow-hidden rounded-lg bg-white shadow-lg
+   transition-all duration-300 hover:shadow-2xl dark:bg-[#333333]"
+    >
+      <div
+                role="status"
+                className="flex w-[250px] h-[250px] mr-3 items-center justify-center  bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700"
+              >
+                <div
+                  className="w-[250px] h-[250px] text-gray-200 dark:text-gray-600"
+                  aria-hidden="true"
+                 
+                >
+                     </div>
+              </div>
+      <div className="flex flex-col mt-2 pr-2 pl-2">
+        <div className="flex text-sm items-center text-gray-500  uppercase font-semibold">
+          <p className="w-[200px] h-3 bg-gray-200 rounded-xl pr-4  "></p>
+        </div>
+
+        <div className="flex text-sm mt-2 items-center text-black font-semibold">
+          <p className="w-[100px] h-4 bg-gray-200 rounded-xl pr-4 "></p>
+        </div>
+      </div>
+      <div className="flex flex-wrap  bg-gray-300 rounded-lg m-2 justify-between items-center">
+        <div className="p-2">
+          <p className="w-[50px] m-1 h-3 bg-gray-500 rounded-xl items-center text-gray-500 ">
+          
+          </p>
+          <p className="w-[50px] m-1 h-3 bg-gray-500 rounded-xl items-center text-black ">
+            
+          </p>
+        </div>
+        <div className="p-2">
+          <p className="w-[50px]  m-1 h-3 bg-gray-500 rounded-xl items-center text-gray-500 ">
+           
+          </p>
+          <p className="w-[50px]  m-1 h-3 bg-gray-500 rounded-xl items-center text-black ">
+            
+          </p>
+        </div>
+      </div>
+    </div>)}
     </Link>
   );
 };

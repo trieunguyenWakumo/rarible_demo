@@ -1,27 +1,65 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ListCard from "../../components/card/ListCard";
 import { AiOutlineUnorderedList } from "react-icons/ai";
 import { BiGridAlt } from "react-icons/bi";
-import ListCardTable from "../../components/listCrad/ListCradTable";
-import NFTDATA from "./NFTDATA.json";
-export const MainNFTScreen = () => {
-  const [isListCard, setListCard] = useState("listCard");
-  const dataNetWork = useState(NFTDATA)
+
+
+
+import NFTDATA from "../../data/NFTDATA.json";
+import TableCard from "../../components/listCard/TableCard";
+ const NFTScreen = (props:{addressNetWork: string}) => {
+  const chainId = window.ethereum.chainId
+  const addressNetWork = props.addressNetWork
+  const [listCard, setListCard] = useState("listCard");
+  
+  const [dataNft, setDataNft ]= useState<any>([]);
+
   const changeCollectionListCard = () => {
-    const checkValue = isListCard
-    switch(checkValue){
-       case "listCard":
+    const checkValue = listCard;
+    switch (checkValue) {
+      case "listCard":
         setListCard("listCardTable");
         break;
-        case "listCardTable":
-          setListCard("listCard");
-          break;
+      case "listCardTable":
+        setListCard("listCard");
+        break;
     }
   };
- 
-
+useEffect(()=>{
+  checkNameNetWork()
+},[addressNetWork,chainId])
   //
+  const checkNameNetWork =useCallback(()=>{
+    switch(addressNetWork)
+    {
+      
+      case "MUMBAI":
+        setDataNft(NFTDATA.data_nft_mumbai as any);
+        break
+          case "ETH":
+          setDataNft(NFTDATA.data_nft_eth as any);
+        break
+        case "BNB":
+          setDataNft(NFTDATA.data_nft_bnb as any);
+        break
+  
+    }
+    switch(chainId)
+    {
+      
+      case "0x89":
+        setDataNft(NFTDATA.data_nft_mumbai as any);
+        break
+          case "0x1":
+          setDataNft(NFTDATA.data_nft_eth as any);
+        break
+        case "0x38":
+          setDataNft(NFTDATA.data_nft_bnb as any);
+        break
+  
+    }
+  },[addressNetWork,chainId])
   return (
     <>
       <div>
@@ -30,16 +68,15 @@ export const MainNFTScreen = () => {
             <button
               onClick={changeCollectionListCard}
               className={`font-medium rounded-xl ${
-                isListCard == "listCard" ? "bg-white text-black" : ""
+                listCard == "listCard" ? "bg-white text-black" : ""
               } pr-[16px] pl-[16px] pt-[6px] pb-[6px] hover:text-black`}
             >
-               <BiGridAlt />
-             
+              <BiGridAlt />
             </button>
             <button
               onClick={changeCollectionListCard}
               className={`font-medium rounded-xl ${
-                isListCard == "listCardTable" ? "bg-white text-black" : ""
+                listCard == "listCardTable" ? "bg-white text-black" : ""
               } pr-[16px] pl-[16px] pt-[6px] pb-[6px]  hover:text-black`}
             >
               <AiOutlineUnorderedList />
@@ -48,12 +85,12 @@ export const MainNFTScreen = () => {
         </div>
       </div>
       <div className="flex flex-wrap m-2">
-        {NFTDATA.DATANFT_LIST.map((e) => {
+        {dataNft.map((e : any,index:number) => {
           return (
-            <>
-              {isListCard == "listCard" ? (
+            <div key={index}>
+              {listCard == "listCard" ? (
                 <ListCard
-                id={e.id}
+                  id={e.id}
                   imageUrl={e.imageUrl}
                   price={e.price}
                   amount={e.amount}
@@ -63,8 +100,8 @@ export const MainNFTScreen = () => {
                   name={e.name}
                 />
               ) : (
-                <ListCardTable
-                id={e.id}
+                <TableCard
+                  id={e.id}
                   imageUrl={e.imageUrl}
                   price={e.price}
                   amount={e.amount}
@@ -74,10 +111,11 @@ export const MainNFTScreen = () => {
                   name={e.name}
                 />
               )}
-            </>
+            </div>
           );
         })}
       </div>
     </>
   );
 };
+export default NFTScreen;

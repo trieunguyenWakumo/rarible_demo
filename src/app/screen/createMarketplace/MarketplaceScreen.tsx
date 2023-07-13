@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import Web3Modal from "web3modal";
 import Image from "next/image";
 import axios from "axios";
-import ABI721 from "./ABI721.json";
+import ABI721 from "./../../data/ABI721.json";
 import CardNFT from "./cardNFTs/CardNFT";
 import { create } from "domain";
-import { formatBalance } from "../wallet.tsx/format";
+import { formatBalance } from "../wallet/format";
 
 const mintedTokenIds = [1, 2,3,4]
 const MarketplaceScreen = () => {

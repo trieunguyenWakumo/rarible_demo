@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoAddCircleSharp } from 'react-icons/io5';
-import Wallet from './wallet.tsx/WalletTransfer';
+import Wallet from './wallet/WalletTransfer';
 import Link from 'next/link';
 const Header = () => {
   return (

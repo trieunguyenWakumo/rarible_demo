@@ -1,11 +1,9 @@
-import { MainNFTScreen } from "../screen/NFTsConnect/MainNFTScreen";
-import NetworkWallet from "../screen/NFTsConnect/NetworkWallet";
+import NetworkWallet from "../screen/nftsConnect/NetworkWallet";
 
 export default function Page() {
   return (
     <>
       <NetworkWallet />
-      <MainNFTScreen />
     </>
   );
 }

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Web3Modal from "web3modal";
 import Image from "next/image";
 import axios from "axios";
-import ABI from "./../../wallet.tsx/ABI.json"
+import ABI from "../../../data/ABI721.json"
 import { parseUnits } from "ethers/lib/utils";
 import { IoIosAdd } from 'react-icons/io';
 const PriceData = {
@@ -32,7 +32,6 @@ const CardNFT = () => {
         Store.push(res.data);
         setNFT(Store);
       });
-    console.log(data);
   };
 
   useEffect(() => {

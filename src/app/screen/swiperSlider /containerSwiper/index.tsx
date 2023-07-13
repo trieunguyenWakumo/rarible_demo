@@ -20,7 +20,7 @@ const ContainerSwiper = (slides: any) => {
     <div className="flex flex-wrap w-full  justify-center group">
       <div className="flex  max-w-md max-h-96">
         <Image
-          src={`/${slides.slides[currentIndex].url}`}
+          src={`/image/${slides.slides[currentIndex].url}`}
           alt="banner"
           width={420}
           height={420}

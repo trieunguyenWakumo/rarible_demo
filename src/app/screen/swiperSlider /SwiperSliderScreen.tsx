@@ -1,6 +1,6 @@
 import React from "react";
 import ContainerSwiper from "./containerSwiper";
-import NFTDATA from "./../NFTsConnect/NFTDATA.json"
+import NFTDATA from "./../../data/NFTDATA.json"
 const SwiperSlider = () => {
 
   return (
@@ -12,7 +12,7 @@ const SwiperSlider = () => {
       <div className="">
         <div className=" relative  z-0 pr-[64px] pl-[64px] pt-[32px] pb-[32px]  w-full ">
           <div className="">
-            <ContainerSwiper slides="{NFTDATAD.DATASWIPER"/>
+            <ContainerSwiper slides={NFTDATA.data_swiper}/>
           </div>
         </div>
       </div>

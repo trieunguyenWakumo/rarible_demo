@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { formatBalance, formatChainAsNum } from "./format";
 import {parseUnits, ethers } from "ethers";
-import ABI from "./ABI.json";
+import ABI from "./../../data/ABI.json";
 import { MdWallet } from "react-icons/md";
 const Wallet = () => {
   //0x1F474158849B6aDF419b6B95EC3aeEDebaeC1658
